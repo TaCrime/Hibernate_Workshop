@@ -1,8 +1,9 @@
 package com.hib.testproject.controller;
 
 import com.hib.testproject.service.CredentialsVerifier;
-import com.hib.testproject.util.ApplicationContextProvider;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,8 +23,8 @@ public class LoginServlet extends HttpServlet {
                        HttpServletResponse response)
             throws IOException, ServletException {
 
-        CredentialsVerifier credentialsVerifier = (CredentialsVerifier) ApplicationContextProvider
-                .getApplicationContext().getBean("credentialsVerifier");
+        ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
+        CredentialsVerifier credentialsVerifier = (CredentialsVerifier)context.getBean("credentialsVerifier");
         String login = StringUtils.trim(request.getParameter("login"));
         String password = StringUtils.trim(request.getParameter("password"));
         if (StringUtils.isNoneBlank(login) && StringUtils.isNoneBlank(password) &&

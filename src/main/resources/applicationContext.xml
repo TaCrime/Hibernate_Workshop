@@ -7,7 +7,7 @@
     <context:annotation-config/>
     <bean id="credentialsService" class="com.hib.testproject.service.impl.CredentialsServiceImpl"></bean>
     <bean id="passwordStrengthService" class="com.hib.testproject.service.impl.PasswordStrengthServiceImpl"></bean>
-    <bean id="credentialsVerifier" class="com.hib.testproject.service.impl.CredentialsVerifierImpl" autowire="byName">
+    <bean id="credentialsVerifier" class="com.hib.testproject.service.impl.CredentialsVerifierImpl">
     </bean>
     <bean id="registerService" class="com.hib.testproject.service.impl.RegisterServiceImpl" autowire="byName">
     </bean>
